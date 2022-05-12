@@ -5,14 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BudgetListComponent } from './budget-list/budget-list.component';
 import { BudgetFormComponent } from './budget-form/budget-form.component';
-import { BudgetStatsComponent } from './budget-stats/budget-stats.component';
+import { BudgetStatComponent } from './budget-stat/budget-stat.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BudgetListComponent,
     BudgetFormComponent,
-    BudgetStatsComponent
+    BudgetStatComponent
   ],
   imports: [
     BrowserModule,
