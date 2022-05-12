@@ -10,5 +10,4 @@ node_modules: package.json
 	@$(MAKE) -s install
 
 install:
-	@(package_manager) install
-
+	@$(package_manager) install
