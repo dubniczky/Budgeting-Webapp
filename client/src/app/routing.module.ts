@@ -5,6 +5,7 @@ import { BudgetListComponent } from "./budget-list/budget-list.component";
 import { BudgetFormComponent } from "./budget-form/budget-form.component";
 import { BudgetStatComponent } from "./budget-stat/budget-stat.component";
 import { BudgetEditComponent } from "./budget-edit/budget-edit.component";
+import { AboutInfoComponent } from "./about-info/about-info.component";
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: "list",
     component: BudgetListComponent,
+  },
+  {
+    path: "about",
+    component: AboutInfoComponent,
   },
   {
     path: "budget/new",

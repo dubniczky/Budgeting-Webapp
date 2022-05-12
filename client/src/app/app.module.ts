@@ -9,6 +9,7 @@ import { BudgetListComponent } from './budget-list/budget-list.component';
 import { BudgetFormComponent } from './budget-form/budget-form.component';
 import { BudgetStatComponent } from './budget-stat/budget-stat.component';
 import { BudgetEditComponent } from './budget-edit/budget-edit.component';
+import { AboutInfoComponent } from './about-info/about-info.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BudgetEditComponent } from './budget-edit/budget-edit.component';
     BudgetListComponent,
     BudgetFormComponent,
     BudgetStatComponent,
-    BudgetEditComponent
+    BudgetEditComponent,
+    AboutInfoComponent
   ],
   imports: [
     BrowserModule,
