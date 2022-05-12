@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BudgetStatComponent implements OnInit {
 
+  totalSpend = 123
+  totalIncome = 99
+
   constructor() { }
 
   ngOnInit(): void {
