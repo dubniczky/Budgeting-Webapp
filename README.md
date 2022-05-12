@@ -1,3 +1,3 @@
-# IncidentCenter
+# Family Budget
 
-An Angular web application for managing issues in a collaborative environment
+An Angular web application with Laravel REST API server for family budgeting
