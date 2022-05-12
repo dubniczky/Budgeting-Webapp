@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
-import { BudgetListComponent } from "../budget-list/budget-list.component";
-import { BudgetFormComponent } from "../budget-form/budget-form.component";
-import { BudgetStatComponent } from "../budget-stat/budget-stat.component";
-import { BudgetEditComponent } from "../budget-edit/budget-edit.component";
+import { BudgetListComponent } from "./budget-list/budget-list.component";
+import { BudgetFormComponent } from "./budget-form/budget-form.component";
+import { BudgetStatComponent } from "./budget-stat/budget-stat.component";
+import { BudgetEditComponent } from "./budget-edit/budget-edit.component";
 
 const routes: Routes = [
   {
@@ -12,7 +12,7 @@ const routes: Routes = [
     component: BudgetStatComponent,
   },
   {
-    path: "items",
+    path: "list",
     component: BudgetListComponent,
   },
   {
