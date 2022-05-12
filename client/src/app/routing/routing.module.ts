@@ -4,24 +4,24 @@ import { RouterModule, Routes } from "@angular/router";
 import { BudgetListComponent } from "../budget-list/budget-list.component";
 import { BudgetFormComponent } from "../budget-form/budget-form.component";
 import { BudgetStatComponent } from "../budget-stat/budget-stat.component";
+import { BudgetEditComponent } from "../budget-edit/budget-edit.component";
 
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "/issues",
-    pathMatch: "full",
+    component: BudgetStatComponent,
   },
   {
-    path: "issues",
-    component: IssueListComponent,
+    path: "items",
+    component: BudgetListComponent,
   },
   {
-    path: "issues/new",
-    component: IssueFormComponent,
+    path: "budget/new",
+    component: BudgetFormComponent,
   },
   {
-    path: "issues/:id",
-    component: IssueDetailComponent,
+    path: "budget/:id",
+    component: BudgetEditComponent,
   },
 ];
 
