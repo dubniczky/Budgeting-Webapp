@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { BudgetListComponent } from './budget-list/budget-list.component';
 import { BudgetFormComponent } from './budget-form/budget-form.component';
 import { BudgetStatComponent } from './budget-stat/budget-stat.component';
+import { BudgetEditComponent } from './budget-edit/budget-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BudgetListComponent,
     BudgetFormComponent,
-    BudgetStatComponent
+    BudgetStatComponent,
+    BudgetEditComponent
   ],
   imports: [
     BrowserModule,
