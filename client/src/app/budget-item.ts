@@ -9,11 +9,13 @@ const categoryTypes = [
 
 export class BudgetItem {
     
+    id: number
     title: string
     value: number
     category: string
 
     constructor(title:string, value:number, category:string) {
+        this.id = -1
         this.title = title
         this.value = value
         this.category = category

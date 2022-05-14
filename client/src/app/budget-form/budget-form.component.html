@@ -1,1 +1,22 @@
-<p>budget-form works!</p>
+<div class="container-sm">
+    <form [formGroup]="budgetForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" placeholder="Weekly shopping" formControlName="title" required pattern="^(\d|\w|\s){1,64}$" [class.is-invalid]="title?.invalid && (title?.dirty || title?.touched)"
+            [class.is-valid]="title?.valid"/>
+
+            <label for="value">Amount</label>
+            <input type="number" class="form-control" id="value" placeholder="eg: 12.45" formControlName="value" required 
+            [class.is-invalid]="value?.invalid && (value?.dirty || value?.touched)"
+            [class.is-valid]="value?.valid"/>
+
+            <label for="category">Category</label>
+            <input type="text" class="form-control" id="category" placeholder="eg: groceries" formControlName="category" required pattern="^(\d|\w|\s){1,64}$"
+            [class.is-invalid]="category?.invalid && (category?.dirty || category?.touched)"
+            [class.is-valid]="category?.valid"/>
+
+            <button type="submit" class="btn btn-primary" [disabled]="budgetForm.invalid">Submit</button>
+        </div>
+    </form>
+    {{budgetForm.get('title')?.errors | json}}
+</div>
