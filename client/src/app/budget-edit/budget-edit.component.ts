@@ -1,15 +1,53 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
+
+import { BudgetItem } from '../budget-item'
+import { BudgetService } from '../budget.service'
+
 
 @Component({
   selector: 'app-budget-edit',
   templateUrl: './budget-edit.component.html',
-  styleUrls: ['./budget-edit.component.css']
+  styleUrls: ['./budget-edit.component.css'],
+  providers: [BudgetService]
 })
 export class BudgetEditComponent implements OnInit {
 
-  constructor() { }
+  item: BudgetItem
 
-  ngOnInit(): void {
+  form = this.fb.group({
+    title: [ '', [Validators.required, Validators.pattern(/^(\d|\w|\s){1,64}$/)] ],
+    value: ['', [Validators.required] ],
+    category: [ '', [Validators.required, Validators.pattern(/^(\d|\w|\s){1,64}$/)] ],
+  });
+
+  constructor(private route: ActivatedRoute, private budgetService: BudgetService, private fb: FormBuilder) { 
+    this.item = new BudgetItem
   }
 
+  get title() { return this.form.get('title') }
+  get value() { return this.form.get('value') }
+  get category() { return this.form.get('category') }
+
+  async ngOnInit() {
+    this.route.params.subscribe(async params => {
+      if (params['id'] == null) return
+
+      let id = params['id']
+      this.item = await this.budgetService.get(id)
+      console.log(this.item)
+
+      this.form.patchValue({
+        title: this.item.title,
+        value: this.item.value,
+        category: this.item.category
+      })
+    });
+  }
+
+  async onSubmit() {
+
+  }
 }

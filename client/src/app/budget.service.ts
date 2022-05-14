@@ -23,10 +23,17 @@ export class BudgetService {
 
   constructor(private http: HttpClient) { }
 
-  get(id: number): Observable<BudgetItem> {
+  async get(id: number): Promise<BudgetItem> {
     let obs = this.http.get<BudgetItem>(`${this.urls.get}/${id}`)
-    return obs
-    //return lastValueFrom(obs);
+    let budget = await lastValueFrom(obs)
+    let item = new BudgetItem()
+
+    item.id = budget.id
+    item.title = budget.title
+    item.category = budget.category
+    item.value = budget.value
+
+    return item
   }
 
   async all(): Promise<BudgetItem[]> {
