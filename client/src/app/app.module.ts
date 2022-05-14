@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { RoutingModule } from './routing.module';
@@ -18,13 +19,14 @@ import { AboutInfoComponent } from './about-info/about-info.component';
     BudgetFormComponent,
     BudgetStatComponent,
     BudgetEditComponent,
-    AboutInfoComponent
+    AboutInfoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RoutingModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
