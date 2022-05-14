@@ -25,7 +25,7 @@ const routes: Routes = [
     component: BudgetFormComponent,
   },
   {
-    path: "budget/:id",
+    path: "edit/:id",
     component: BudgetEditComponent,
   },
 ];
