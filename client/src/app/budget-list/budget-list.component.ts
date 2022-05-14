@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { lastValueFrom } from 'rxjs';
 import { BudgetItem } from '../budget-item'
+import { BudgetService } from '../budget.service'
 
 @Component({
   selector: 'app-budget-list',
   templateUrl: './budget-list.component.html',
-  styleUrls: ['./budget-list.component.css']
+  styleUrls: ['./budget-list.component.css'],
+  providers: [BudgetService]
 })
 export class BudgetListComponent implements OnInit {
   items: BudgetItem[]
 
-  constructor() {
+  constructor(private budgetService: BudgetService) {
     this.items = [
       new BudgetItem('Groceries', 315.0, 'food'),
       new BudgetItem('Eating out', 50.0, 'food'),
@@ -20,7 +23,8 @@ export class BudgetListComponent implements OnInit {
     ]
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.items = await this.budgetService.all();
   }
 
 }

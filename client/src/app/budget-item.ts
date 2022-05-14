@@ -14,7 +14,7 @@ export class BudgetItem {
     value: number
     category: string
 
-    constructor(title:string, value:number, category:string) {
+    constructor(title:string = '', value:number = 0, category:string = '') {
         this.id = -1
         this.title = title
         this.value = value
