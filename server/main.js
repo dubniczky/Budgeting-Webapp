@@ -1,6 +1,7 @@
 import express from 'express'
 
 import { allowCors } from 'budget/middleware/cors.js'
+import { BudgetItem } from 'budget/model/budget-item.js'
 
 const app = express()
 app.use(express.json())
@@ -17,7 +18,11 @@ let list = [
     { id: 5, title: 'Benefits', value: 150, category: 'job' },
 ]
 
+// Respond with CORS headers when the browser is doing preliminary checks
 app.options('*', (req, res) => {
+    res.sendStatus(200)
+})
+app.head('*', (req, res) => {
     res.sendStatus(200)
 })
 
