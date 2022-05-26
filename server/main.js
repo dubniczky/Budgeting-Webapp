@@ -3,6 +3,8 @@ import express from 'express'
 import { allowCors } from 'budget/middleware/cors.js'
 import { BudgetItem } from 'budget/model/budget-item.js'
 
+const PORT = 8080
+
 const app = express()
 app.use(express.json())
 app.use(allowCors)
@@ -74,6 +76,6 @@ app.post('/api/budget/new', (req, res) => {
     res.send({ok:1, id:item.id})
 })
 
-app.listen(8080, () => {
-	console.log('listening')
+app.listen(PORT, () => {
+	console.log('Listening on:', PORT)
 })
