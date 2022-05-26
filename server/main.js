@@ -32,6 +32,27 @@ app.head('/headers', (req, res) => {
     res.send( req.headers )
 })
 
+app.get('/api/stats', (req, res) => {
+    let list = []
+    let spend = 0
+    let income = 0
+
+    for (let i of list) {
+        let val = i.value
+        if (val > 0) {
+            income += val
+        }
+        else {
+            spend += -val
+        }
+    }
+
+    return res.json({
+        income: income,
+        spending: spend
+    })
+})
+
 
 // Starting server
 app.listen(PORT, () => {

@@ -17,11 +17,11 @@ const httpOptions = {
 export class BudgetService {
 
   private urls = {
-    new: 'http://127.0.0.1:8080/api/budget/new',
-    get: 'http://127.0.0.1:8080/api/budget/get',
-    all: 'http://127.0.0.1:8080/api/budget/all',
+    new: 'http://127.0.0.1:8080/api/budget',
+    get: 'http://127.0.0.1:8080/api/budget',
+    all: 'http://127.0.0.1:8080/api/budget',
     edit: 'http://127.0.0.1:8080/api/budget',
-    stat: 'http://127.0.0.1:8080/api/stats'
+    stat: 'http://127.0.0.1:8080/api/budget/stats'
   }
 
   constructor(private http: HttpClient) { }

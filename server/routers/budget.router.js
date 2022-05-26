@@ -42,24 +42,4 @@ router.get('/:id', (req, res) => {
     res.json(list[id])
 })
 
-router.get('/stats', (req, res) => {
-    let spend = 0
-    let income = 0
-
-    for (let i of list) {
-        let val = i.value
-        if (val > 0) {
-            income += val
-        }
-        else {
-            spend += -val
-        }
-    }
-
-    res.json({
-        income: income,
-        spending: spend
-    })
-})
-
 export default router
