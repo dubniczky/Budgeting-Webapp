@@ -1,7 +1,7 @@
 {
-  "name": "testapi",
+  "name": "budget",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "main.js",
   "type": "module",
   "license": "MIT",
   "dependencies": {
@@ -9,5 +9,8 @@
   },
   "scripts": {
     "start": "npx node main.js"
+  },
+  "exports": {
+    "./*": "./*"
   }
 }
