@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 
-import { AppRoutingModule } from './app-routing.module';
 import { RoutingModule } from './routing.module';
 import { AppComponent } from './app.component';
 import { BudgetListComponent } from './budget-list/budget-list.component';
@@ -23,7 +22,6 @@ import { AboutInfoComponent } from './about-info/about-info.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     RoutingModule,
     ReactiveFormsModule,
     HttpClientModule
