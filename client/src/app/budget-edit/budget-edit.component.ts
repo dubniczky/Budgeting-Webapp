@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { Router } from '@angular/router'
 
 import { BudgetItem } from '../budget-item'
 import { BudgetService } from '../budget.service'
@@ -23,7 +24,7 @@ export class BudgetEditComponent implements OnInit {
     category: [ '', [Validators.required, Validators.pattern(/^(\d|\w|\s){1,64}$/)] ],
   });
 
-  constructor(private route: ActivatedRoute, private budgetService: BudgetService, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, private budgetService: BudgetService, private fb: FormBuilder, private router:Router) {
     this.item = new BudgetItem
   }
 
@@ -48,6 +49,19 @@ export class BudgetEditComponent implements OnInit {
   }
 
   async onSubmit() {
+    let budgetItem = new BudgetItem(
+      this.form.value.title,
+      this.form.value.value,
+      this.form.value.category
+    )
+    budgetItem.id = this.item.id
 
+    let item = await this.budgetService.edit(budgetItem)
+    if (item == null) {
+      console.log('Error editing item')
+      return
+    }
+
+    this.router.navigate(['/', 'list'])
   }
 }

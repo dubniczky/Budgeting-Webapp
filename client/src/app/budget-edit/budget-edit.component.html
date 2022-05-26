@@ -7,7 +7,7 @@
             [class.is-valid]="title?.valid"/>
 
             <label for="value">Amount</label>
-            <input type="number" class="form-control" id="value" placeholder="eg: 12.45" formControlName="value" required 
+            <input type="number" class="form-control" id="value" placeholder="eg: 12.45" formControlName="value" required
             [class.is-invalid]="value?.invalid && (value?.dirty || value?.touched)"
             [class.is-valid]="value?.valid"/>
 
@@ -16,8 +16,8 @@
             [class.is-invalid]="category?.invalid && (category?.dirty || category?.touched)"
             [class.is-valid]="category?.valid"/>
 
-            <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Save</button>
-            <button type="button" class="btn btn-primary" [disabled]="form.invalid">Reset</button>
+            <button type="submit" class="btn btn-success" [disabled]="form.invalid">Save</button>
+            <button type="button" class="btn btn-danger" [disabled]="form.invalid">Reset</button>
         </div>
     </form>
     {{form.get('title')?.errors | json}}

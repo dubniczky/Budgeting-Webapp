@@ -20,6 +20,7 @@ export class BudgetService {
     new: 'http://127.0.0.1:8080/api/budget/new',
     get: 'http://127.0.0.1:8080/api/budget/get',
     all: 'http://127.0.0.1:8080/api/budget/all',
+    edit: 'http://127.0.0.1:8080/api/budget',
     stat: 'http://127.0.0.1:8080/api/stats'
   }
 
@@ -71,6 +72,17 @@ export class BudgetService {
     } catch (error) {
       console.log(error)
       return null
+    }
+  }
+
+  async edit(be: BudgetItem): Promise<boolean> {
+    try {
+      let obs = this.http.patch<BudgetItem>(`${this.urls.edit}`, be)
+      let res = await lastValueFrom(obs)
+      return true
+    } catch (error) {
+      console.log(error)
+      return false
     }
   }
 }
