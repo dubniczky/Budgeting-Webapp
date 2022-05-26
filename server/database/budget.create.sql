@@ -1,4 +1,4 @@
-CREATE TABLE budget (
+CREATE TABLE budgets (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title text NOT NULL UNIQUE,
     c_value real NOT NULL,
