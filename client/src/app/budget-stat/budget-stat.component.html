@@ -1,3 +1,35 @@
+<div class="container-sm">
+  <h1 class="display-3 text-center">Family Budgeting Hub</h1>
 
-<h2>Spend {{ totalSpend }}</h2>
-<h2>Spend {{ totalIncome }}</h2>
+  <p class="lead text-center">
+    Track your expenses in one place for all family members with and easy to use and simple web interface.
+  </p>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">{{ totalSpend }}</h2>
+          <p class="card-text">Total monthly spending</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">{{ totalIncome }}</h2>
+          <p class="card-text">Total monthly Income</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <img src="./assets/expense.jpg" class="card-img-top" alt="Calculating expenses">
+    <div class="card-body">
+      <h5 class="card-title">Get started now!</h5>
+      <p class="card-text"><small class="text-muted">Online</small></p>
+    </div>
+  </div>
+
+</div>
