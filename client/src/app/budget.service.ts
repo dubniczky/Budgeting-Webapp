@@ -54,4 +54,15 @@ export class BudgetService {
 
     return items
   }
+
+  async new(be: BudgetItem): Promise<BudgetItem|null> {
+    try {
+      let obs = this.http.post<BudgetItem>(`${this.urls.new}`, be)
+      let res = await lastValueFrom(obs)
+      return res
+    } catch (error) {
+      console.log(error)
+      return null
+    }
+  }
 }

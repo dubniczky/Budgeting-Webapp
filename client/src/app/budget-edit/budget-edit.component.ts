@@ -23,7 +23,7 @@ export class BudgetEditComponent implements OnInit {
     category: [ '', [Validators.required, Validators.pattern(/^(\d|\w|\s){1,64}$/)] ],
   });
 
-  constructor(private route: ActivatedRoute, private budgetService: BudgetService, private fb: FormBuilder) { 
+  constructor(private route: ActivatedRoute, private budgetService: BudgetService, private fb: FormBuilder) {
     this.item = new BudgetItem
   }
 
