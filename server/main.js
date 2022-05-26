@@ -1,7 +1,6 @@
 import express from 'express'
 
 import { allowCors } from 'budget/middleware/cors.js'
-import { BudgetItem } from 'budget/model/budget-item.js'
 
 const PORT = 8080
 
@@ -16,8 +15,8 @@ let list = [
     { id: 3, title: 'Bills', value: -112.0, category: 'housing' },
     { id: 4, title: 'Car', value: -45.0, category: 'trasport' },
     { id: 5, title: 'Public Transport', value: -35.0, category: 'trasport' },
-    { id: 5, title: 'Salary', value: 5500, category: 'job' },
-    { id: 5, title: 'Benefits', value: 150, category: 'job' },
+    { id: 6, title: 'Salary', value: 5500, category: 'job' },
+    { id: 7, title: 'Benefits', value: 150, category: 'job' },
 ]
 
 // Respond with CORS headers when the browser is doing preliminary checks
@@ -63,8 +62,9 @@ app.patch('/api/budget', (req, res) => {
         return res.sendStatus(400)
     }
 
+    list[id] = req.body // TODO
 
-    res.json(list[id])
+    res.json({ ok:1 })
 })
 
 app.post('/api/budget/new', (req, res) => {

@@ -1,4 +1,4 @@
-class BudgetItem {
+export class BudgetItem {
     id
     title
     value
