@@ -1,7 +1,10 @@
-import express, { json } from 'express'
+import express from 'express'
+
+import { allowCors } from 'budget/middleware/cors.js'
 
 const app = express()
 app.use(express.json())
+app.use(allowCors)
 
 let list = [
     { id: 0, title: 'Groceries', value: -315.0, category: 'food' },
@@ -14,9 +17,15 @@ let list = [
     { id: 5, title: 'Benefits', value: 150, category: 'job' },
 ]
 
-app.get('/api/stats', (req, res) => {
-	res.header('Access-Control-Allow-Origin', '*')
+app.options('*', (req, res) => {
+    res.sendStatus(200)
+})
 
+app.get('/api/budget/all', (req, res) => {
+    res.json(list)
+})
+
+app.get('/api/stats', (req, res) => {
     let spend = 0
     let income = 0
 
@@ -37,20 +46,21 @@ app.get('/api/stats', (req, res) => {
 })
 
 app.get('/api/budget/get/:id', (req, res) => {
-	res.header('Access-Control-Allow-Origin', '*')
-
     let id = req.params['id']
     res.json(list[id])
 })
 
-app.options('/api/budget/new', (req, res) => {
-	res.header('Access-Control-Allow-Origin', '*')
-	res.header('Access-Control-Allow-Headers', '*')
-    res.sendStatus(200)
-})
-app.post('/api/budget/new', (req, res) => {
-	res.header('Access-Control-Allow-Origin', '*')
+app.patch('/api/budget', (req, res) => {
+    let id = req.body.id
+    if (id == null) {
+        return res.sendStatus(400)
+    }
 
+
+    res.json(list[id])
+})
+
+app.post('/api/budget/new', (req, res) => {
     let item = req.body
     console.log(item)
     item.id = list.length
