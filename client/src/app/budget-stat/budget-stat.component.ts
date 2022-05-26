@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BudgetService } from '../budget.service'
 
 @Component({
   selector: 'app-budget-stat',
@@ -10,9 +11,12 @@ export class BudgetStatComponent implements OnInit {
   totalSpend = 123
   totalIncome = 99
 
-  constructor() { }
+  constructor(private budgetService: BudgetService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    let stat = await this.budgetService.stats()
+    this.totalSpend = stat.spending
+    this.totalIncome = stat.income
   }
 
 }

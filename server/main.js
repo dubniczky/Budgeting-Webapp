@@ -4,17 +4,36 @@ const app = express()
 app.use(express.json())
 
 let list = [
-    { id: 0, title: 'Groceries', value: 315.0, category: 'food' },
-    { id: 1, title: 'Eating out', value: 50.0, category: 'food' },
-    { id: 2, title: 'Rent', value: 900.0, category: 'housing' },
-    { id: 3, title: 'Bills', value: 112.0, category: 'housing' },
-    { id: 4, title: 'Car', value: 45.0, category: 'trasport' },
-    { id: 5, title: 'Public Transport', value: 35.0, category: 'trasport' },
+    { id: 0, title: 'Groceries', value: -315.0, category: 'food' },
+    { id: 1, title: 'Eating out', value: -50.0, category: 'food' },
+    { id: 2, title: 'Rent', value: -900.0, category: 'housing' },
+    { id: 3, title: 'Bills', value: -112.0, category: 'housing' },
+    { id: 4, title: 'Car', value: -45.0, category: 'trasport' },
+    { id: 5, title: 'Public Transport', value: -35.0, category: 'trasport' },
+    { id: 5, title: 'Salary', value: 5500, category: 'job' },
+    { id: 5, title: 'Benefits', value: 150, category: 'job' },
 ]
 
-app.get('/api/budget/all', (req, res) => {
+app.get('/api/stats', (req, res) => {
 	res.header('Access-Control-Allow-Origin', '*')
-    res.json(list)
+
+    let spend = 0
+    let income = 0
+
+    for (let i of list) {
+        let val = i.value
+        if (val > 0) {
+            income += val
+        }
+        else {
+            spend += -val
+        }
+    }
+
+    res.json({
+        income: income,
+        spending: spend
+    })
 })
 
 app.get('/api/budget/get/:id', (req, res) => {

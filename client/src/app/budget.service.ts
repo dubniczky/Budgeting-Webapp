@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BudgetItem } from './budget-item';
 import { lastValueFrom, Observable } from 'rxjs';
+import { Stat } from '../app/stat'
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,7 +19,8 @@ export class BudgetService {
   private urls = {
     new: 'http://127.0.0.1:8080/api/budget/new',
     get: 'http://127.0.0.1:8080/api/budget/get',
-    all: 'http://127.0.0.1:8080/api/budget/all'
+    all: 'http://127.0.0.1:8080/api/budget/all',
+    stat: 'http://127.0.0.1:8080/api/stats'
   }
 
   constructor(private http: HttpClient) { }
@@ -53,6 +55,12 @@ export class BudgetService {
     }
 
     return items
+  }
+
+  async stats(): Promise<Stat> {
+    let obs = this.http.get<Stat>(`${this.urls.stat}`)
+    let stat = await lastValueFrom(obs)
+    return stat
   }
 
   async new(be: BudgetItem): Promise<BudgetItem|null> {
