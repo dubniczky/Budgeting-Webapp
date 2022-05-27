@@ -24,9 +24,8 @@ router.patch('/', (req, res) => {
 
 router.post('/', (req, res) => {
     let item = req.body
-    console.log(item)
-    item.id = list.length
-    list.push(item)
+    
+    db.add(req.body)
 
     res.send({ok:1, id:item.id})
 })

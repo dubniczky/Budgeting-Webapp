@@ -28,9 +28,16 @@ export function update(budget) {
     return res
 }
 
+export function add(budget) {
+    const res = db.prepare('INSERT INTO budgets (title, c_value, category) VALUES (?, ?, ?)')
+        .run(budget.title, budget.value, budget.category)
+    return res
+}
+
 
 export default {
     list,
     get,
+    add,
     update
 }
