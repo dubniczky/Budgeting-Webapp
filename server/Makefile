@@ -6,7 +6,7 @@ node := node
 devnode := nodemon
 main := main.js
 debug_args := --trace-exit --trace-uncaught --trace-warnings
-deploy_args := --disallow-code-generation-from-strings
+deploy_args := 
 db_name := db.sqlite
 
 lint:
@@ -19,7 +19,7 @@ dev: $(main)
 	$(devnode) $(debug_args) $(main)
 
 start: node_modules
-	$(node) $(deploy_args)
+	$(node) $(deploy_args) $(main)
 
 deploy: $(lockfile)
 	$(pm) install -s --pure-lockfile --no-progress --prod
