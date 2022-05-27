@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import sqlite from 'better-sqlite3'
 
-import { BudgetItem } from 'budget/model/budget-item.js'
+import BudgetItem from 'budget/model/budget-item.js'
 import config from 'budget/module/config.js'
 
 let clean = false

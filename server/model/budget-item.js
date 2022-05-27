@@ -1,4 +1,4 @@
-export class BudgetItem {
+export default class BudgetItem {
     id
     title
     value
