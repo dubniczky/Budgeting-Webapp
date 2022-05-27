@@ -26,3 +26,7 @@ For further details on all commands for the client and server service, take a lo
 
 - [/client/Makefile](/client/Makefile)
 - [/server/Makefile](/server/Makefile)
+
+## License
+
+This project is under MIT license: [license](/LICENSE)
