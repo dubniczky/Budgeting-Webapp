@@ -19,11 +19,11 @@ if (clean_db) {
 }
 
 export function query(sql, params) {
-    db.prepare(sql).all(params)
+    return db.prepare(sql).all(params)
 }
 
 export function exec(sql, params) {
-    db.prepare(sql).run(params)
+    return db.prepare(sql).run(params)
 }
 
 export function migrate() {
@@ -44,7 +44,7 @@ export function seed() {
         { id: 7, title: 'Benefits', value: 150, category: 'job' },
     ]
 
-    for (let b in budgets) {
+    for (let b of budgets) {
         exec('INSERT INTO budgets (title, c_value, category) VALUES (?, ?, ?)',
             [b.title, b.value, b.category])
     }
