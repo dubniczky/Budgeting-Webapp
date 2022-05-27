@@ -1,10 +1,14 @@
 import express from 'express'
-import db from 'budget/database/database.js'
+import db from 'budget/service/budget.service.js'
 
 const router = express.Router()
 
 router.get('/', (req, res) => {
-    res.json(list)
+    res.json( db.list() )
+})
+
+router.get('/:id', (req, res) => {
+    res.json( db.get(req.params['id']) )
 })
 
 router.patch('/', (req, res) => {
@@ -25,11 +29,6 @@ router.post('/', (req, res) => {
     list.push(item)
 
     res.send({ok:1, id:item.id})
-})
-
-router.get('/:id', (req, res) => {
-    let id = req.params['id']
-    res.json(list[id])
 })
 
 export default router

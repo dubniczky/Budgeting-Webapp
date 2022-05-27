@@ -2,7 +2,6 @@ import fs from 'fs'
 import path from 'path'
 import sqlite from 'better-sqlite3'
 
-import BudgetItem from 'budget/model/budget-item.js'
 import config from 'budget/module/config.js'
 
 let clean = false
@@ -12,7 +11,7 @@ if (!fs.existsSync(config.database.path)) {
 }
 
 console.log('Opening database', config.database.path)
-const db = new sqlite(config.database.path)
+export let db = new sqlite(config.database.path)
 
 if (clean) {
     if (config.database.migrate) migrate()
@@ -27,13 +26,13 @@ export function exec(sql, params) {
     return db.prepare(sql).run(params)
 }
 
-export function migrate() {
+function migrate() {
     const file = path.resolve('database/budget.create.sql')
     const sql = fs.readFileSync( file, 'utf8' )
     db.exec(sql)
 }
 
-export function seed() {
+function seed() {
     let budgets = [
         { id: 0, title: 'Groceries', value: -315.0, category: 'food' },
         { id: 1, title: 'Eating out', value: -50.0, category: 'food' },
@@ -49,19 +48,4 @@ export function seed() {
         exec('INSERT INTO budgets (title, c_value, category) VALUES (?, ?, ?)',
             [b.title, b.value, b.category])
     }
-}
-
-export function toBudgets(qres) {
-    let budgets = []
-    for (let b of budgets) {
-        budgets.push( new BudgetItem(b.id, b.title, b.c_value, b.category) )
-    }
-    return budgets
-}
-
-export default {
-    db,
-    query,
-    exec,
-    toBudgets
 }
