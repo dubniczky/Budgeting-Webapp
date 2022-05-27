@@ -4,9 +4,10 @@ An Angular web application with NodeJS REST API server for web-based budgeting
 
 ## Requirements
 
-- NodeJS `16+`
-- Yarn `1.2+`
-- Make `4+`
+- NodeJS `16+` (runtime environment)
+- Yarn `1.2+` (package manager)
+- Make `4+` (build system)
+- Git `2.3+` (version control system)
 
 ## Quick Start
 
