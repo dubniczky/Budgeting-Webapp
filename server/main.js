@@ -1,11 +1,12 @@
 import express from 'express'
 
 import { allowCors } from 'budget/middleware/cors.js'
+import config from 'budget/module/config.js'
+
+import debugRouter from 'budget/routers/debug.router.js'
 import budgetRouter from 'budget/routers/budget.router.js'
 
-
-const PORT = 8080
-
+// Create server
 const app = express()
 
 
@@ -15,6 +16,7 @@ app.use(allowCors)
 
 
 // Install routers
+if (config.debug) app.use('/debug', debugRouter)
 app.use('/api/budget', budgetRouter)
 
 
@@ -24,12 +26,6 @@ app.options('*', (req, res) => {
 })
 app.head('*', (req, res) => {
     res.sendStatus(200)
-})
-
-
-// Echo headers (debug)
-app.head('/headers', (req, res) => {
-    res.send( req.headers )
 })
 
 app.get('/api/stats', (req, res) => {
@@ -55,6 +51,6 @@ app.get('/api/stats', (req, res) => {
 
 
 // Starting server
-app.listen(PORT, () => {
-	console.log('Listening on:', PORT)
+app.listen(config.port, () => {
+	console.log('Listening on:', config.port)
 })
