@@ -1,4 +1,6 @@
 port: 8080
 debug: true
 database:
+  path: db.sqlite
+  migrate: true
   seed: true

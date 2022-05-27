@@ -3,19 +3,20 @@ import path from 'path'
 import sqlite from 'better-sqlite3'
 
 import { BudgetItem } from 'budget/model/budget-item.js'
+import config from 'budget/module/config.js'
 
-const dbpath = 'db.sqlite'
-let clean_db = false
+let clean = false
 
-if (!fs.existsSync(dbpath)) {
-    clean_db = true
+if (!fs.existsSync(config.database.path)) {
+    clean = true
 }
 
-const db = new sqlite(dbpath)
+console.log('Opening database', config.database.path)
+const db = new sqlite(config.database.path)
 
-if (clean_db) {
-    migrate()
-    seed()
+if (clean) {
+    if (config.database.migrate) migrate()
+    if (config.database.seed) seed()
 }
 
 export function query(sql, params) {
@@ -52,7 +53,7 @@ export function seed() {
 
 export function toBudgets(qres) {
     let budgets = []
-    for (let b in budgets) {
+    for (let b of budgets) {
         budgets.push( new BudgetItem(b.id, b.title, b.c_value, b.category) )
     }
     return budgets
@@ -61,4 +62,6 @@ export function toBudgets(qres) {
 export default {
     db,
     query,
+    exec,
+    toBudgets
 }
