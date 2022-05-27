@@ -22,8 +22,15 @@ export function get(id) {
     return toBudget( db.prepare('select * from budgets where id = ?').get(id) )
 }
 
+export function update(budget) {
+    const res = db.prepare('update budgets set title = ?, c_value = ?, category = ? where id = ?')
+        .run(budget.title, budget.value, budget.category, budget.id)
+    return res
+}
+
 
 export default {
     list,
-    get
+    get,
+    update
 }

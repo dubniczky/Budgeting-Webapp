@@ -17,7 +17,7 @@ router.patch('/', (req, res) => {
         return res.sendStatus(400)
     }
 
-    list[id] = req.body // TODO
+    db.update(req.body)
 
     res.json({ ok:1 })
 })
