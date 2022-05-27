@@ -6,7 +6,7 @@
         <li *ngFor="let item of items"class="list-group-item">
             <span class="badge rounded-pill bg-secondary"
                  [ngClass]="'bg-' + item.getCategoryType()">{{item.category}}</span>
-            {{item.title}} - {{item.value}}
+            {{item.title}} - <b>$ {{item.value}}</b>
             <button class="btn btn-primary" style="float:right" mat-button routerLink="/edit/{{item.id}}">Edit</button>
         </li>
     </ul>
