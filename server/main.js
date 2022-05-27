@@ -2,6 +2,7 @@ import express from 'express'
 
 import { allowCors } from 'budget/middleware/cors.js'
 import config from 'budget/module/config.js'
+import budgetDb from 'budget/service/budget.service.js'
 
 import debugRouter from 'budget/routers/debug.router.js'
 import budgetRouter from 'budget/routers/budget.router.js'
@@ -29,24 +30,7 @@ app.head('*', (req, res) => {
 })
 
 app.get('/api/stats', (req, res) => {
-    let list = []
-    let spend = 0
-    let income = 0
-
-    for (let i of list) {
-        let val = i.value
-        if (val > 0) {
-            income += val
-        }
-        else {
-            spend += -val
-        }
-    }
-
-    return res.json({
-        income: income,
-        spending: spend
-    })
+    return res.json( budgetDb.stat() )
 })
 
 

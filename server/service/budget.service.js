@@ -34,10 +34,18 @@ export function add(budget) {
     return res
 }
 
+export function stat() {
+    return {
+        income: db.prepare('select SUM(c_value) as s from budgets where c_value > 0').get().s,
+        spending: -db.prepare('select SUM(c_value) as s from budgets where c_value < 0').get().s
+    }
+}
+
 
 export default {
     list,
     get,
     add,
-    update
+    update,
+    stat
 }
