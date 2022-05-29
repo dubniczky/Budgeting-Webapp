@@ -11,6 +11,16 @@ An Angular web application with NodeJS REST API server for web-based budgeting
 
 ## Quick Start
 
+### Docker Compose
+
+Buld and start both service containers at once with the following command:
+
+```bash
+docker-compose up --build
+```
+
+### Manual
+
 Start server
 
 ```bash
