@@ -16,6 +16,12 @@ An Angular web application with NodeJS REST API server for web-based budgeting
 Buld and start both service containers at once with the following command:
 
 ```bash
+make
+```
+
+In case make is not installed, you can manually start it:
+
+```bash
 docker-compose up --build
 ```
 
