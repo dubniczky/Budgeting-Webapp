@@ -1,1 +1,15 @@
+# Folders
 .vscode/
+node_modules/
+tmp/
+dist/
+
+# Files
+*.sqlite*
+yarn-error.log*
+yarn-debug.log*
+npm-debug.log*
+
+# System files
+.DS_Store
+Thumbs.db
