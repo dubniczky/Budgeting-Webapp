@@ -2,6 +2,12 @@
 
 An Angular web application with NodeJS REST API server for web-based budgeting
 
+## Support ❤️
+
+If you find the project useful, please consider supporting, or contributing.
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/dubniczky)
+
 ## Requirements
 
 - NodeJS `16+` (runtime environment)
