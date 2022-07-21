@@ -8,12 +8,15 @@ If you find the project useful, please consider supporting, or contributing.
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/dubniczky)
 
+## Details
+
+This a learning project, without any security precautions, like authentication. Only suitable to run on Localhost/LAN systems and for a point of reference for your learning.
+
 ## Requirements
 
 - NodeJS `16+` (runtime environment)
 - Yarn `1.2+` (package manager)
 - Make `4+` (build system)
-- Git `2.3+` (version control system)
 
 ## Quick Start
 
